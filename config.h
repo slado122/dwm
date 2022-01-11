@@ -7,12 +7,12 @@
 /* appearance */
 static const unsigned int borderpx = 3; /* border pixel of windows */
 static const unsigned int snap = 32;    /* snap pixel */
-static const unsigned int gappih = 0;   /* horiz inner gap between windows */
-static const unsigned int gappiv = 0;   /* vert inner gap between windows */
+static const unsigned int gappih = 2;   /* horiz inner gap between windows */
+static const unsigned int gappiv = 2;   /* vert inner gap between windows */
 static const unsigned int gappoh =
-    0; /* horiz outer gap between windows and screen edge */
+    1; /* horiz outer gap between windows and screen edge */
 static const unsigned int gappov =
-    0; /* vert outer gap between windows and screen edge */
+    1; /* vert outer gap between windows and screen edge */
 static const int swallowfloating =
     0; /* 1 means swallow floating windows by default */
 static const int smartgaps =
@@ -145,7 +145,8 @@ static Key keys[] = {
     STACKKEYS(MODKEY, focus) STACKKEYS(MODKEY | ShiftMask, push)
     /* { MODKEY|ShiftMask,		XK_Escape,	spawn,	SHCMD("") }, */
     {MODKEY, XK_grave, spawn, SHCMD("dmenuunicode")},
-    /* { MODKEY|ShiftMask,		XK_grave,	togglescratch,	SHCMD("")
+    /* { MODKEY|ShiftMask,		XK_grave,	togglescratch,
+     * SHCMD("")
      * },
      */
     TAGKEYS(XK_1, 0) TAGKEYS(XK_2, 1) TAGKEYS(XK_3, 2) TAGKEYS(XK_4, 3)
@@ -169,6 +170,7 @@ static Key keys[] = {
     {MODKEY, XK_w, spawn, SHCMD("$BROWSER")},
     {MODKEY | ShiftMask, XK_w, spawn, SHCMD(TERMINAL " -e nmtui")},
     {MODKEY, XK_e, spawn, SHCMD(TERMINAL " -e neomutt")},
+    {MODKEY | ShiftMask, XK_e, spawn, SHCMD("dmenu_emoticons")},
     {MODKEY, XK_r, spawn, SHCMD(TERMINAL " -e ranger")},
     {MODKEY | ShiftMask, XK_r, spawn, SHCMD(TERMINAL " -e htop")},
     {MODKEY, XK_t, setlayout, {.v = &layouts[0]}},             /* tile */
@@ -199,29 +201,29 @@ static Key keys[] = {
     {MODKEY, XK_semicolon, shiftview, {.i = 1}},
     {MODKEY | ShiftMask, XK_semicolon, shifttag, {.i = 1}},
     {MODKEY, XK_apostrophe, togglescratch, {.ui = 1}},
-    /* { MODKEY|ShiftMask,		XK_apostrophe,	spawn,		SHCMD("")
+    /* { MODKEY|ShiftMask,		XK_apostrophe,	spawn, SHCMD("")
      * },
      */
     {MODKEY, XK_Return, spawn, {.v = termcmd}},
     {MODKEY | ShiftMask, XK_Return, togglescratch, {.ui = 0}},
 
     {MODKEY, XK_z, incrgaps, {.i = +3}},
-    /* { MODKEY|ShiftMask,		XK_z,		spawn,		SHCMD("")
+    /* { MODKEY|ShiftMask,		XK_z,		spawn, SHCMD("")
      * },
      */
     {MODKEY, XK_x, incrgaps, {.i = -3}},
-    /* { MODKEY|ShiftMask,		XK_x,		spawn,		SHCMD("")
+    /* { MODKEY|ShiftMask,		XK_x,		spawn, SHCMD("")
      * },
      */
-    /* { MODKEY,			XK_c,		spawn,		SHCMD("")
+    /* { MODKEY,			XK_c,		spawn, SHCMD("")
      * },
      */
-    /* { MODKEY|ShiftMask,		XK_c,		spawn,		SHCMD("")
+    /* { MODKEY|ShiftMask,		XK_c,		spawn, SHCMD("")
      * },
      */
     /* V is automatically bound above in STACKKEYS */
     {MODKEY, XK_b, togglebar, {0}},
-    /* { MODKEY|ShiftMask,		XK_b,		spawn,		SHCMD("")
+    /* { MODKEY|ShiftMask,		XK_b,		spawn, SHCMD("")
      * },
      */
     {MODKEY, XK_n, spawn, SHCMD(TERMINAL " -e nvim -c VimwikiIndex")},
